@@ -49,8 +49,8 @@
                             <span class="input-group-addon">
                                 <i class="glyphicon glyphicon-user" style="width: auto"></i>
                             </span>
-                            <form action="/enter-id">
-                                <input id="txtUsuario" runat="server" type="text" class="form-control" name="user" placeholder="Username" required="" />
+                            <form action="/login" method="post">
+                                <input id="user" runat="server" type="text" class="form-control" name="user" placeholder="Username" required="" />
                             </div>
                         </div>
                         <div class="form-group">
@@ -58,7 +58,7 @@
                                 <span class="input-group-addon">
                                     <i class="glyphicon glyphicon-lock" style="width: auto"></i>
                                 </span>
-                                <input id="txtSenha" runat="server" type="password" class="form-control" name="password" placeholder="Password" required="" />
+                                <input id="password" runat="server" type="password" class="form-control" name="password" placeholder="Password" required="" />
                             </div>
                         </div>
                         <button id="btnsubmit" type="submit" class="btn btn-default" style="width: 100%">
