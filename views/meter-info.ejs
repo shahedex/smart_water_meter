@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Meter Info | Smart Water Meter</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<style>
+  .tabdata {
+  text-align: center;
+  margin: 0 auto;
+}
+.btndata{
+  text-align: right;
+  margin: auto;
+}
+</style>
+
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">Smart Water Meter Dashboard</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/meter-info">Home</a></li>
+        <li><a href="#">About</a></li>
+      </ul>
+      
+    </div>
+  </div>
+</nav>
+  
+<div class="container-fluid text-center">    
+    <div class="col-sm-12 text-left"> 
+      <div class="row">
+        <div class="tabdata col-sm-10"><h1>Current Information : Meter No. XX</h1></div>
+        <div class="col-sm-2"><br><button type="button" onclick="location.href='/instant-data'" class="btn btn-info">Retrive Instant Data</button></div>
+        <div class="col-sm-1"><br><button type="button" onclick="location.href='/all-data'" class="btn btn-info">View All Data</button></div>
+    </div>
+        <hr>
+            
+      <div class="container">
+        <h2 class="tabdata">Last Synced Data</h2><hr>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Firstname</th>
+              <th>Lastname</th>
+              <th>Email</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>John</td>
+              <td>Doe</td>
+              <td>john@example.com</td>
+            </tr>
+            <tr>
+              <td>Mary</td>
+              <td>Moe</td>
+              <td>mary@example.com</td>
+            </tr>
+            <tr>
+              <td>July</td>
+              <td>Dooley</td>
+              <td>july@example.com</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+<footer class="container-fluid text-center">
+  <p>Copyright: Smart Water Meter Project, CUET</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Enter ID | Smart Water Meter</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <style>
+        .tabdata {
+        text-align: center;
+        margin: 0 auto;
+      }
+      .btndata{
+        text-align: right;
+        margin: auto;
+      }
+      </style>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">Smart Water Meter Dashboard</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><a href="/index">Home</a></li>
+        <li><a href="#">About</a></li>
+      </ul>
+      
+    </div>
+  </div>
+</nav>
+  
+<div class="container-fluid">    
+  <div class="row content">
+    <div class="col-sm-12"> 
+      <h1 class="tabdata">Welcome to the Meter Administration Dashboard</h1> <hr>
+      <div class="tabdata">
+        <a href="/all-meters" class="btn btn-info" role="button">View Existing Meters</a>
+      </div>
+      <hr>
+            
+      <div class="container">
+          <h2 class="tabdata">View a Meter Info by ID</h2> <hr>
+        <form action="/meter-info">
+          <div class="input-group">
+            <span class="input-group-addon">Meter ID</span>
+            <input id="msg" type="text" class="form-control" name="msg" placeholder="Enter Smart Water Meter ID">
+          </div>
+          <br>
+            <div class="tabdata"><input type="submit" class="btn btn-lg btn-success btndata" value="Submit"></div> 
+        </form>
+      </div>
+
+  </div>
+</div>
+<footer class="container-fluid text-center">
+  <p>Copyright: Smart Water Meter Project, CUET</p>
+</footer>
+
+</body>
+</html>
