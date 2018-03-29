@@ -14,14 +14,6 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Home | Smart Water Meter' });
 });
 
-router.get('/login', function(req, res, next){
-  var user = req.body.user;
-  var pass = req.body.password;
-  console.log(user);
-  console.log(pass);
-  res.render('enter-id',{title: 'ID of Water Meter'});
-});
-
 router.get('/enter-id', function(req, res, next) {
   res.render('enter-id',{title: 'ID of Water Meter'});
 });
