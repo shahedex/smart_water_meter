@@ -15,6 +15,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/enter-id', function(req, res, next) {
+  var meterid = req.body.id;
   res.render('enter-id',{title: 'ID of Water Meter'});
 });
 
@@ -31,13 +32,14 @@ router.get('/instant-data',function(req, res, next) {
 });
 
 router.get('/all-meters',function(req, res, next) {
-    var sql = `SELECT Id from datatable`;
+    var sql = `SELECT DISTINCT Id from datatable`;
     conn.query(sql, function (err, result) {
       if (err) throw err;
       console.log("Id fetched from datatable");
-      var rows = JSON.stringify(result);
-      console.log(rows);
+      // for (var val in result){
+      //   console.log(result[val]['Id']);
+      // }
+      res.render('all-meters',{items : result});
     });
-  res.render('all-meters',{title: 'All Meters'});
 });
 module.exports = router;

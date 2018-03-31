@@ -9,16 +9,26 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-<style>
-  .tabdata {
-  text-align: center;
-  margin: 0 auto;
-}
-.btndata{
-  text-align: right;
-  margin: auto;
-}
-</style>
+    <style>
+    .row.content {height: 450px}
+
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+      .row.content {height:auto;} 
+
+    .tabdata {
+    text-align: center;
+    margin: 0 auto;
+  }
+  .btndata{
+    text-align: right;
+    margin: auto;
+  }
+  </style>
+  
 
 
 <nav class="navbar navbar-inverse">
@@ -49,27 +59,17 @@
         <table class="table table-bordered">
           <thead>
             <tr>
-              <th>Firstname</th>
-              <th>Lastname</th>
-              <th>Email</th>
+              <th class="tabdata">Meter ID</th>
+              <th class="tabdata">STATUS</th>
             </tr>
           </thead>
           <tbody>
+              <% items.forEach(function(item) { %>
             <tr>
-              <td>John</td>
-              <td>Doe</td>
-              <td>john@example.com</td>
+                <td class="tabdata"><%- item.Id %></td>
+                <td class="tabdata"> Online </td>
             </tr>
-            <tr>
-              <td>Mary</td>
-              <td>Moe</td>
-              <td>mary@example.com</td>
-            </tr>
-            <tr>
-              <td>July</td>
-              <td>Dooley</td>
-              <td>july@example.com</td>
-            </tr>
+            <% }); %>
           </tbody>
         </table>
       </div>
