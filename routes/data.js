@@ -24,6 +24,7 @@ router.get('/id/:id/datetime/:datetime/pulse/:pulse',function(req,res,next){
       // send records as a response
       res.send(recordset);
       console.log('done');
+      sql.close();
   });
   
 });
