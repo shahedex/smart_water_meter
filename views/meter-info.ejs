@@ -41,7 +41,7 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="/meter-info">Home</a></li>
+        <li class="active"><a href="/enter-id">Home</a></li>
         <li><a href="#">About</a></li>
       </ul>
       
@@ -52,9 +52,13 @@
 <div class="container-fluid text-center">    
     <div class="col-sm-12 text-left"> 
       <div class="row">
-        <div class="tabdata col-sm-10"><h1>Current Information : Meter No. XX</h1></div>
+        <div class="tabdata col-sm-10"><h1>Current Information : Meter No. <%- id %></h1></div>
         <div class="col-sm-2"><br><button type="button" onclick="location.href='/instant-data'" class="btn btn-info">Retrive Instant Data</button></div>
-        <div class="col-sm-1"><br><button type="button" onclick="location.href='/all-data'" class="btn btn-info">View All Data</button></div>
+        <!--<div class="col-sm-1"><br><button type="button" onclick="location.href='/all-data'" class="btn btn-info">View All Data</button></div> -->
+        <form class="col-sm-1" action = "/all-data" method = "post">
+          <input type="hidden" name="meterid" value="<%- id %>">
+            <input class="btn btn-info" type="submit" value="View All Data" />
+        </form>
     </div>
         <hr>
             
@@ -63,27 +67,19 @@
         <table class="table table-bordered">
           <thead>
             <tr>
-              <th>Firstname</th>
-              <th>Lastname</th>
-              <th>Email</th>
+              <th class="tabdata">ID</th>
+              <th class="tabdata">DateTime</th>
+              <th class="tabdata">Pulse</th>
             </tr>
           </thead>
           <tbody>
+              <% items.forEach(function(item) { %>
             <tr>
-              <td>John</td>
-              <td>Doe</td>
-              <td>john@example.com</td>
+              <td class="tabdata"><%- item.Id %></td>
+              <td class="tabdata"><%- item.DateTime %></td>
+              <td class="tabdata"><%- item.Pulse %></td>
             </tr>
-            <tr>
-              <td>Mary</td>
-              <td>Moe</td>
-              <td>mary@example.com</td>
-            </tr>
-            <tr>
-              <td>July</td>
-              <td>Dooley</td>
-              <td>july@example.com</td>
-            </tr>
+            <% }); %>
           </tbody>
         </table>
       </div>

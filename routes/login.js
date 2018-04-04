@@ -1,14 +1,14 @@
 var express = require('express');
 var assert = require('assert');
-var db = require('mysql');
+const sql = require('mssql');
 var router = express.Router();
 
-var conn = db.createConnection({
-    host: "sql12.freemysqlhosting.net",
-    user: "sql12228905",
-    password: "id6Gb2BAqI",
-    database: "sql12228905"
-  });
+var config = {
+  user: 'apu',
+  password: 'Sel12345',
+  server: '116.193.220.12',
+  database: 'cuet_meter'
+}
 
 router.post('/',function(req,res,next){
     var user = req.body.user;
@@ -16,15 +16,21 @@ router.post('/',function(req,res,next){
     var login = false;
     console.log(user);
     console.log(pass);
-    var sql = `SELECT * FROM user where username='${user}' AND password='${pass}'`;
-    conn.query(sql, function (err, result) {
-         if (err) throw err;
-         console.log("login fetched from datatable");
-         console.log(result.length);
-         if(result.length > 0) res.render('enter-id',{title: 'enter the id'});
-         else res.render('wrong-login',{title: 'Wrong Login | Try Again'});
-       });
+    sql.connect(config, function(err){
+      if(err) console.log(err);
+      var request = new sql.Request();
+      request.query(`SELECT * FROM users where username='${user}' AND password='${pass}'`, function (err, recordset) { 
+      if (err) console.log(err)
+      console.log("login fetched from datatable");
+      console.log(recordset['recordset']);
+      if(recordset['recordset'].length > 0) res.render('enter-id',{title: 'enter the id'});
+      else res.render('wrong-login',{title: 'Wrong Login | Try Again'});
+      sql.close();
+    });
+    
+  });
   
 });
+
 
 module.exports = router;

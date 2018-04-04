@@ -43,7 +43,7 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li><a href="/meter-info">Home</a></li>
+        <li><a href="/enter-id">Home</a></li>
         <li><a href="#">About</a></li>
       </ul>
       
@@ -53,34 +53,26 @@
   
 <div class="container-fluid text-center">    
     <div class="col-sm-12 text-left"> 
-        <div class="tabdata"><h1>Current Information : Meter No. XX</h1></div>
+        <div class="tabdata"><h1>Current Information : Meter No. <%- id %></h1></div>
         <hr>
       <div class="container">
         <h2 class="tabdata">All Synced Data</h2>
         <table class="table table-bordered">
           <thead>
             <tr>
-              <th>Firstname</th>
-              <th>Lastname</th>
-              <th>Email</th>
+              <th class="tabdata">ID</th>
+              <th class="tabdata">DateTime</th>
+              <th class="tabdata">Pulse</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>John</td>
-              <td>Doe</td>
-              <td>john@example.com</td>
-            </tr>
-            <tr>
-              <td>Mary</td>
-              <td>Moe</td>
-              <td>mary@example.com</td>
-            </tr>
-            <tr>
-              <td>July</td>
-              <td>Dooley</td>
-              <td>july@example.com</td>
-            </tr>
+              <% items.forEach(function(item) { %>
+                <tr>
+                  <td class="tabdata"><%- item.Id %></td>
+                  <td class="tabdata"><%- item.DateTime %></td>
+                  <td class="tabdata"><%- item.Pulse %></td>
+                </tr>
+                <% }); %>
           </tbody>
         </table>
       </div>

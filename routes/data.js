@@ -1,6 +1,6 @@
 var express = require('express');
 var assert = require('assert');
-var db = require('mysql');
+const sql = require('mssql');
 var router = express.Router();
 
 router.get('/id/:id/datetime/:datetime/pulse/:pulse',function(req,res,next){
@@ -8,19 +8,25 @@ router.get('/id/:id/datetime/:datetime/pulse/:pulse',function(req,res,next){
   var datetime = req.params['datetime'];
   var pulse = req.params['pulse'];
 
-  var conn = db.createConnection({
-    host: "sql12.freemysqlhosting.net",
-    user: "sql12228905",
-    password: "id6Gb2BAqI",
-    database: "sql12228905"
-  });
-    var sql = `INSERT INTO datatable (Id, DateTime, Pulse) VALUES ('${id}', '${datetime}', '${pulse}')`;
-    console.log(sql);
-    conn.query(sql, function (err, result) {
-      if (err) throw err;
+  var config = {
+    user: 'apu',
+    password: 'Sel12345',
+    server: '116.193.220.12',
+    database: 'cuet_meter'
+  }
+  sql.connect(config, function(err){
+    if(err) console.log(err);
+    var request = new sql.Request();
+    request.query(`INSERT INTO datatable (Id, DateTime, Pulse) VALUES ('${id}', '${datetime}', '${pulse}')`, function (err, recordset) {
+      
+      if (err) console.log(err)
       console.log("1 record inserted");
-    });
-  res.send(req.params);
+      // send records as a response
+      res.send(recordset);
+      console.log('done');
+  });
+  
+});
 });
 
 module.exports = router;
