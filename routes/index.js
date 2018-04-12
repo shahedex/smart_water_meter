@@ -34,7 +34,7 @@ router.post('/meter-info', function(req, res, next) {
   sql.connect(config, function(err){
     if(err) console.log(err);
     var request = new sql.Request();
-    request.query(`SELECT * FROM datatable WHERE Id='${meterid}'`, function (err, recordset) {
+    request.query(`SELECT * FROM datatable WHERE Id='${meterid}' ORDER BY rowID DESC`, function (err, recordset) {
       
       if (err) console.log(err)
       console.log('done');
@@ -50,7 +50,7 @@ router.get('/dbconnect',function(req, res, next) {
   sql.connect(config, function(err){
     if(err) console.log(err);
     var request = new sql.Request();
-    request.query("insert into instadata (Id, Status) values ('2','1')", function (err, recordset) {
+    request.query("select * from datatable", function (err, recordset) {
       
       if (err) console.log(err)
   
@@ -92,8 +92,13 @@ router.post('/instant-fetching/id/:id',function(req, res, next) {
     request.query(`update instadata set Status='1' where Id='${meterid}'`, function (err, recordset) {
       if (err) console.log(err);
       console.log('done');
+    });
+    request2.query(`SELECT * FROM datatable WHERE Id='${meterid}'`, function (err, recordset) {
+      if (err) console.log(err)
+      console.log('done');
+      console.log(recordset['recordset']);
+      res.render('meter-info',{items : recordset['recordset'], id: meterid});
       sql.close();
-      res.render('instant-data',{id:meterid});
     });
   });
 });

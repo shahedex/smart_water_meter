@@ -7,6 +7,9 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+
 </head>
 <body>
     <style>
@@ -53,7 +56,7 @@
   
 <div class="container-fluid text-center">    
     <div class="col-sm-12 text-left"> 
-        <div class="tabdata"><h1>Current Information : Meter No. <%- id %></h1></div>
+        <div class="tabdata"><h1>Current Information : Meter No.<h2 id="meterTag"><%- id %></h2>  </h1></div>
         <hr>
       <div class="container">
         <h2 class="tabdata">All Synced Data</h2>
@@ -80,4 +83,8 @@
   <p>Copyright: Smart Water Meter Project, CUET</p>
 </footer>
 </body>
+<script>
+    var meterID = document.getElementById("meterTag").innerHTML;
+    alert(meterID);
+</script>
 </html>
