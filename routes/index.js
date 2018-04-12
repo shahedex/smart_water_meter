@@ -1,6 +1,6 @@
 var express = require('express');
 var assert = require('assert');
-//var db = require('mysql');
+const url = require('url'); 
 const sql = require('mssql');
 var router = express.Router();
 
@@ -16,7 +16,8 @@ var config = {
   user: 'apu',
   password: 'Sel12345',
   server: '116.193.220.12',
-  database: 'cuet_meter'
+  database: 'cuet_meter',
+  multipleStatements: true
 }
 
 router.get('/', function(req, res, next) {
@@ -49,7 +50,7 @@ router.get('/dbconnect',function(req, res, next) {
   sql.connect(config, function(err){
     if(err) console.log(err);
     var request = new sql.Request();
-    request.query("select * from users", function (err, recordset) {
+    request.query("insert into instadata (Id, Status) values ('2','1')", function (err, recordset) {
       
       if (err) console.log(err)
   
@@ -57,6 +58,7 @@ router.get('/dbconnect',function(req, res, next) {
       res.send(recordset);
       console.log('done');
     console.log("connection successfull");
+    sql.close();
   });
   
 });
@@ -79,8 +81,21 @@ router.post('/all-data',function(req, res, next) {
   });
 });
 
-router.get('/instant-data',function(req, res, next) {
-  res.render('instant-data',{title: 'Instant Data'});
+router.post('/instant-fetching/id/:id',function(req, res, next) {
+  var meterid = req.body.meterid;
+  sql.connect(config, function(err){
+    if(err) console.log(err);
+    var request = new sql.Request();
+    var request2 = new sql.Request();
+    var request3 = new sql.Request();
+
+    request.query(`update instadata set Status='1' where Id='${meterid}'`, function (err, recordset) {
+      if (err) console.log(err);
+      console.log('done');
+      sql.close();
+      res.render('instant-data',{id:meterid});
+    });
+  });
 });
 
 router.get('/all-meters',function(req, res, next) {

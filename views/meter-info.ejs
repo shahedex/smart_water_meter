@@ -53,8 +53,10 @@
     <div class="col-sm-12 text-left"> 
       <div class="row">
         <div class="tabdata col-sm-10"><h1>Current Information : Meter No. <%- id %></h1></div>
-        <div class="col-sm-2"><br><button type="button" onclick="location.href='/instant-data'" class="btn btn-info">Retrive Instant Data</button></div>
-        <!--<div class="col-sm-1"><br><button type="button" onclick="location.href='/all-data'" class="btn btn-info">View All Data</button></div> -->
+        <div><form class="col-sm-2" action="/instant-fetching/id/<%- id %>" method="post"><br>
+          <input type="hidden" name="meterid" value="<%- id %>">
+          <input class="btn btn-info" type="submit" value="Retrive Instant Data"/></div>
+        </form>
         <form class="col-sm-1" action = "/all-data" method = "post">
           <input type="hidden" name="meterid" value="<%- id %>">
             <input class="btn btn-info" type="submit" value="View All Data" />
